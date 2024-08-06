@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员端首页/用户添加</title>
+    <link rel="stylesheet" href="/component/personal-css/AdminHomePage.css" type="text/css" />
+    <!--用来控制菜单栏样式的css文件-->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/component/bootstrap-4.5.0/css/bootstrap.css}" />-->
+    <link rel="stylesheet" href="/component/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/component/personal-css/admin/admin-addUser.css">
+</head>
+<body background="/img/Admin/background.jpg" style="background-size: 100%;" >
+<div id="all" style="width: 1470px;height: 680px;">
+    <div id="top" style="height: 100px;">
+        <div id="topleft" style="width: 300px;height: 98px;margin: 2px 0px 0px 2px;position: absolute;">
+            <div id="topleftimage">
+                <img id="topleftimagin" src="/img/Admin/Admin.png" style="height: 80px;width: 80px;margin-top: 5px;margin-left: 5px;float: left;">
+            </div>
+            <div id="topleftfont" style="float: right;">
+                <p><font color="#f5f5f5">管理员,欢迎您</font><br>
+                    <font color="#f5f5f5">当前时间:</font>
+                <div id="dateTime" class="timeFont"></div>
+                </p>
+            </div>
+        </div>
+        <div id="topmiddle">
+            <div id="topmiddlefont">
+                扶贫助农电子商务平台管理端
+            </div>
+        </div>
+        <div id="topright" style=" width: 100px;">
+            <div>
+                <fieldset>
+                    <legend align=center><font size="2px" color="#f5f5f5">本地天气</font></legend>
+                    <div class="Contain">
+                        <div class="Other">
+                            <iframe width="200" scrolling="no" height="65" frameborder="0"  style="color: whitesmoke" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1">
+                            </iframe>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <div id="middle" style="margin-bottom:250px;">
+        <div id="middleleft"  style="width:200px;height:500px;border-right: 2px solid #636463;background-color: #b3b5b3;float: left;">
+            <div id="bigfont" style="margin-left: 50px;" >
+                <font size="5px" face="华文仿宋"><b>功能菜单</b></font>
+            </div>
+            <br>
+            <div class="mainDiv1">
+                <ul id="accordion" class="accordion">
+
+                    <li><div class="link"><i class="fa fa-globe"></i>用户管理<i class="fa fa-chevron-down"></i></div>
+                        <ul class="submenu">
+                            <li><a href="/admin/userManage/addUser" style="font-family: 方正粗黑宋简体">用户添加</a></li>
+                            <li><a href="/admin/userManage/userWatigList" style="font-family: 方正粗黑宋简体">用户信息审核</a></li>
+                            <li><a href="/admin/userManage/userInfoList" style="font-family: 方正粗黑宋简体">查看所有用户</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div id="middleright" style="width: 1262px;height:500px;float: right;">
+            <div>
+                <button class="useBtn" onclick="location.href='/admin/homePage'" style="margin-top: 10px">返回</button>
+            </div>
+            <div style="padding-left:450px;padding-top:50px">
+                <p style="font-size: 25px;padding-left: 100px">用户添加</p>
+                <table>
+                    <form class="form-inline" action="/admin/UserManage/addUserIng" method="post">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <tr>
+                                    <td align="right">用户名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td><input type="text" class="form-control" placeholder="用户名" name="username"></td>
+                                </tr>
+                            </div>
+                            <div class="input-group">
+                                <tr>
+                                    <td align="right">密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td><input type="password" class="form-control" placeholder="密码" name="userpwd"></td>
+                                </tr>
+                            </div>
+                            <div class="input-group">
+                                <tr>
+                                    <td align="right">确认密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td><input type="password" class="form-control" placeholder="确认密码"></td>
+                                </tr>
+                            </div>
+                            <div class="input-group">
+                                <tr>
+                                    <td align="right">性别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td>
+                                        <select  id="selectGender"  class="form-control" name="gender">
+                                            <option>男</option>
+                                            <option>女</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </div>
+                            <div class="input-group">
+                                <tr>
+                                    <td align="right">手机号码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td><input type="text" class="form-control" name="telephone" placeholder="手机号码"></td>
+                                </tr>
+                            </div>
+                            <div class="input-group">
+                                <tr>
+                                    <td align="right">地址&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td><input type="text" class="form-control" name="address" placeholder="所在地址"></td>
+                                </tr>
+                            </div>
+                            <div class="input-group">
+                                <tr>
+                                    <td align="right">等级&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td>
+                                        <select  id="selectGrade"  class="form-control" name="grade">
+                                            <option>普通用户</option>
+                                            <option>农户</option>
+                                            <option>企业级用户</option>
+                                            <option>政府机关</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </div>
+                            <div class="input-group">
+                                <tr>
+                                    <td align="right">身份证号码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td><input type="text" class="form-control" name="identitycard" placeholder="身份证号"></td>
+                                </tr>
+                            </div>
+                            <div class="input-group">
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </div>
+                            <div class="btn-div">
+                                <tr>
+                                    <td align="right"><button class="useBtn" type="submit" onclick="return go()">提&nbsp;&nbsp;&nbsp;交</button></td>
+                                    <td style="padding-left:30px"><button class="useBtn" type="reset" >重&nbsp;&nbsp;&nbsp;置</button></td>
+                                </tr>
+                            </div>
+
+                        </div>
+                    </form>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="bottom" style="height:72px;width: 1468px;margin-top: 500px;">
+    </div>
+
+    <label id="remindLabel" style="display: none" th:if = "${insertSignal == 1004}" th:text="插入成功！"></label>
+</div>
+
+<!--需要导入的JS文件-->
+<script src="/component/jquery-2.1.1/jquery.min.js"></script>
+<script src="/component/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<!--底部滚动字幕-->
+<script src="/component/personal-js/admin/admin-bottom.js"></script>
+<!--导航栏旁的动态时间-->
+<script src="/component/personal-js/admin/admin-addUser-time.js"></script>
+<!--菜单栏的展开和收起-->
+<script src="/component/personal-js/admin/admin-menu.js"></script>
+<!--正则验证-->
+<script src="component/personal-js/register-js.js"></script>
+<!--插入成功的提示框-->
+<script>
+    var remind = document.getElementById('remindLabel').innerHTML;
+    alert(remind);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.personal.ecommercesys.dao.UseridentifyidDao">
+  <resultMap id="BaseResultMap" type="com.personal.ecommercesys.model.Useridentifyid">
+    <!--@mbg.generated-->
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="realName" jdbcType="VARCHAR" property="realname" />
+    <result column="idCardFront" jdbcType="VARCHAR" property="idcardfront" />
+    <result column="idCardBehind" jdbcType="VARCHAR" property="idcardbehind" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    ID, realName, idCardFront, idCardBehind
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from useridentifyid
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from useridentifyid
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="com.personal.ecommercesys.model.Useridentifyid" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into useridentifyid (realName, idCardFront, idCardBehind
+      )
+    values (#{realname,jdbcType=VARCHAR}, #{idcardfront,jdbcType=VARCHAR}, #{idcardbehind,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="ID" keyProperty="id" parameterType="com.personal.ecommercesys.model.Useridentifyid" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into useridentifyid
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="realname != null">
+        realName,
+      </if>
+      <if test="idcardfront != null">
+        idCardFront,
+      </if>
+      <if test="idcardbehind != null">
+        idCardBehind,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="realname != null">
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardfront != null">
+        #{idcardfront,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardbehind != null">
+        #{idcardbehind,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.personal.ecommercesys.model.Useridentifyid">
+    <!--@mbg.generated-->
+    update useridentifyid
+    <set>
+      <if test="realname != null">
+        realName = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardfront != null">
+        idCardFront = #{idcardfront,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardbehind != null">
+        idCardBehind = #{idcardbehind,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.personal.ecommercesys.model.Useridentifyid">
+    <!--@mbg.generated-->
+    update useridentifyid
+    set realName = #{realname,jdbcType=VARCHAR},
+      idCardFront = #{idcardfront,jdbcType=VARCHAR},
+      idCardBehind = #{idcardbehind,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <insert id="insertRecord" parameterType="com.personal.ecommercesys.model.Useridentifyid">
+    <!--@mbg.generated-->
+    insert into useridentifyid
+    values (#{id,jdbcType=VARCHAR},#{realname,jdbcType=VARCHAR}, #{idcardfront,jdbcType=VARCHAR}, #{idcardbehind,jdbcType=VARCHAR}
+    )
+  </insert>
+</mapper>

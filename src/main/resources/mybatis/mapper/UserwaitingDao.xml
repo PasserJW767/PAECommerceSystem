@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.personal.ecommercesys.dao.UserwaitingDao">
+  <resultMap id="BaseResultMap" type="com.personal.ecommercesys.model.Userwaiting">
+    <!--@mbg.generated-->
+    <id column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="userPwd" jdbcType="VARCHAR" property="userpwd" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
+    <result column="identityCard" jdbcType="VARCHAR" property="identitycard" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    userName, gender, userPwd, telephone, address, grade, identityCard
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from userwaiting
+    where userName = #{username,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from userwaiting
+    where userName = #{deleteName,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="userName" keyProperty="username" parameterType="com.personal.ecommercesys.model.Userwaiting" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into userwaiting (gender, userPwd, telephone, 
+      address, grade, identityCard
+      )
+    values (#{gender,jdbcType=VARCHAR}, #{userpwd,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, #{identitycard,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="userName" keyProperty="username" parameterType="com.personal.ecommercesys.model.Userwaiting" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into userwaiting
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="userpwd != null">
+        userPwd,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="identitycard != null">
+        identityCard,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null">
+        #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="identitycard != null">
+        #{identitycard,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.personal.ecommercesys.model.Userwaiting">
+    <!--@mbg.generated-->
+    update userwaiting
+    <set>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null">
+        userPwd = #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="identitycard != null">
+        identityCard = #{identitycard,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userName = #{username,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.personal.ecommercesys.model.Userwaiting">
+    <!--@mbg.generated-->
+    update userwaiting
+    set gender = #{gender,jdbcType=VARCHAR},
+      userPwd = #{userpwd,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR},
+      identityCard = #{identitycard,jdbcType=VARCHAR}
+    where userName = #{username,jdbcType=VARCHAR}
+  </update>
+  <!--插入-->
+  <insert id="addUserinfo" parameterType="com.personal.ecommercesys.model.Userinfo">
+    insert ignore into userWaiting (userName, gender, userPwd, telephone,
+      address, grade, identityCard
+      )
+    values (#{username,jdbcType=VARCHAR},#{gender,jdbcType=VARCHAR}, #{userpwd,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR},
+      #{address,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, #{identitycard,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <!--查所有-->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from userwaiting
+  </select>
+
+  <!--按名字like搜索-->
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from userwaiting
+    where userName like concat ('%',#{searchName,jdbcType=VARCHAR},'%')
+  </select>
+
+</mapper>

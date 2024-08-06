@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.personal.ecommercesys.dao.UserinfoDao">
+  <resultMap id="BaseResultMap" type="com.personal.ecommercesys.model.Userinfo">
+    <!--@mbg.generated-->
+    <id column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="userPwd" jdbcType="VARCHAR" property="userpwd" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
+    <result column="identityCard" jdbcType="VARCHAR" property="identitycard" />
+  </resultMap>
+  <!--对象中的属性可以直接取出来-->
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    userName, gender, userPwd, telephone, address, grade, identityCard
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from userinfo
+    where userName = #{userName,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from userinfo
+    where userName = #{deleteName,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" keyColumn="userName" keyProperty="username" parameterType="com.personal.ecommercesys.model.Userinfo" useGeneratedKeys="true">
+    insert into userinfo (userName,gender, userPwd, telephone,
+      address, grade, identityCard
+      )
+    values (#{username,jdbcType=VARCHAR},#{gender,jdbcType=VARCHAR}, #{userpwd,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR},
+      #{address,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, #{identitycard,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <insert id="insertSelective" keyColumn="userName" keyProperty="username" parameterType="com.personal.ecommercesys.model.Userinfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into userinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="userpwd != null">
+        userPwd,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="identitycard != null">
+        identityCard,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="gender != null">
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null">
+        #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="identitycard != null">
+        #{identitycard,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.personal.ecommercesys.model.Userinfo">
+    <!--@mbg.generated-->
+    update userinfo
+    <set>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="userpwd != null">
+        userPwd = #{userpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="identitycard != null">
+        identityCard = #{identitycard,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userName = #{username,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.personal.ecommercesys.model.Userinfo">
+    <!--@mbg.generated-->
+    update userinfo
+    set gender = #{gender,jdbcType=VARCHAR},
+      userPwd = #{userpwd,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR},
+      identityCard = #{identitycard,jdbcType=VARCHAR}
+    where userName = #{username,jdbcType=VARCHAR}
+  </update>
+
+  <!--登录-->
+  <select id="selectForLogin" parameterType="com.personal.ecommercesys.model.Userinfo"
+          resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from userinfo
+    where userName = #{username,jdbcType = VARCHAR}
+        and userPwd = #{userpwd,jdbcType = VARCHAR}
+  </select>
+
+  <!--插入-->
+  <insert id="addUserinfo" parameterType="com.personal.ecommercesys.model.Userinfo">
+    insert ignore into userinfo (userName, gender, userPwd, telephone,
+      address, grade, identityCard
+      )
+    values (#{username,jdbcType=VARCHAR},#{gender,jdbcType=VARCHAR}, #{userpwd,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR},
+      #{address,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, #{identitycard,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <!--按名字判断是否存在此用户-->
+  <select id="judgeName" parameterType="java.lang.String" resultType="java.lang.String">
+    select
+    <include refid="Base_Column_List" />
+    from userinfo
+    where userName = #{username,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from userinfo
+  </select>
+
+  <!--按用户名查询-->
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from userinfo
+    where userName like concat ('%',#{searchName,jdbcType=VARCHAR},'%')
+  </select>
+
+  <!--按用户名查找（为了编辑）-->
+  <select id="selectByNameForEdit" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from userinfo
+    where userName = #{editName,jdbcType=VARCHAR}
+  </select>
+
+  <!--按用户名查找用户信息-->
+  <select id="selectByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from userinfo
+    where userName = #{userName,jdbcType=VARCHAR}
+  </select>
+</mapper>

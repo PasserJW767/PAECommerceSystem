@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="/component/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/component/personal-css/topNav.css">
+    <script src="/component/jquery-2.1.1/jquery.min.js"></script>
+    <script src="/component/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<style type="text/css">
+    .div-img{display:flex;align-items:center;justify-content:center;width: 164px;height: 70px;border: 1px solid rgba(0, 0, 0, 0.2);}
+    .bottom-img { text-align:center; width:100%; height:70px; background-color:#56ac69; }
+    .link-text{text-overflow:ellipsis;overflow:hidden;white-space: nowrap;}
+</style>
+<!--网站图标和搜索框-->
+<div class="headerer">
+    <div class="sysname-div">
+        <img id="logoimg" class="logoimg" src="/img/logo.jpg">
+        <label for="logoimg">扶贫助农电子商务平台 </label>
+    </div>
+    <div class="searcher" >
+        <input type="text" class="kuang" name="keyword" id="keyword" value="">
+        <a href="javascript:searchOnClick()"><input name="imageField" type="image" src="/img/search.jpg" width="60" height="36" border="0" style="border:none;"></a>
+    </div>
+</div>
+<!--导航栏-->
+<div class="nav-bg">
+    <div class="nav-er" id="topNav_ul">
+        <ul >
+            <li ><a href="javascript:toIndex()">网站首页</a></li>
+
+            <li  ><a href="javascript:toIndustrialBelt()" >特色产业带</a></li>
+
+            <li ><a href="javascript:toProductCenter()" >产品中心</a></li>
+
+            <li ><a href="javascript:toClassification()" >采供分类</a></li>
+
+            <li ><a href="javascript:toEnterprise()" >名企优录</a></li>
+
+            <li ><a href="#" >农博会</a></li>
+
+            <li ><a href="#" >品牌集</a></li>
+
+            <li ><a href="#" >助农行动</a></li>
+
+            <li ><a href="#" >资讯中心</a></li>
+
+        </ul></div>
+</div>
+
+<div class="container" style="margin-bottom: 40px">
+    <div class="row clearfix">
+        <div class="row">
+            <div class="col-md-12 column">
+                <img width="100%" height="150px" src="/img/personal/changtu1.jpg"/>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix" style="margin-top: 20px;border: 1px solid rgba(0, 0, 0, 0.2);border-radius:4px;">
+        <!--个人信息-->
+        <div class="col-md-4 column" >
+            <h3><div style="color: #65c965">个人信息</div></h3>
+            <hr>
+            <span class="glyphicon glyphicon-user" style="color: rgb(255, 140, 60);"> 用户：</span>
+            <input type="text" th:value="${theUser.username}" disabled style="background: #ffffff;border:none" id="name"/>
+            <hr>
+            <span class="glyphicon glyphicon-lock" style="color: rgb(255, 140, 60);"> 密码：</span>
+            <input type="text" th:value="${theUser.userpwd}" disabled style="background: #ffffff;border:none"/>
+            <hr>
+            <span class="glyphicon glyphicon-question-sign" style="color: rgb(255, 140, 60);"> 性别：</span>
+            <input type="text" th:value="${theUser.gender}" disabled style="background: #ffffff;border:none"/>
+            <hr>
+            <span class="glyphicon glyphicon-phone-alt" style="color: rgb(255, 140, 60);"> 电话：</span>
+            <input type="text" th:value="${theUser.telephone}" disabled style="background: #ffffff;border:none"/>
+            <hr>
+            <span class="glyphicon glyphicon-home" style="color: rgb(255, 140, 60);"> 地址：</span>
+            <input type="text" th:value="${theUser.address}" disabled style="background: #ffffff;border:none"/>
+            <hr>
+            <span class="glyphicon glyphicon-tower" style="color: rgb(255, 140, 60);"> 用户类型：</span>
+            <input type="text" th:value="${theUser.grade}" disabled style="background: #ffffff;border:none"/>
+            <hr>
+            <span class="glyphicon glyphicon-credit-card" style="color: rgb(255, 140, 60);"> 身份证号：</span>
+            <input type="text" th:value="${theUser.identitycard}" disabled style="background: #ffffff;border:none"/>
+            <hr>
+            <div class="col-md-4 column"></div>
+            <!--修改按钮-->
+            <div class="col-md-4 column" style="margin-bottom: 10px">
+                <button type="button" class="btn btn-warning btn-sm" >
+                    <a id="modal-913906" href="#modal-container-913906" role="button" class="btn" data-toggle="modal" style="color: #fafafa;">
+                        <font size="4"><span class="glyphicon glyphicon-edit" > 修改</span></font></a></button>
+            </div>
+            <div class="col-md-4 column"></div>
+            <!--模态框-->
+            <div class="modal fade" id="modal-container-913906" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                修改个人信息
+                            </h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <form class="form-horizontal" action="/personal" role="form" method="post">
+                                <div class="form-group">
+                                    <label for="gender" class="col-sm-2 control-label">性别</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="gender" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telephone" class="col-sm-2 control-label">电话</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="telephone" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address" class="col-sm-2 control-label">地址</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="address" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label  class="col-sm-2 control-label">身份证号</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="idcard" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="submit" class="btn btn-primary" onclick="javascript:toEdit()">确认修改</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 column" >
+            <!--订单记录-->
+            <div class="tabbable" id="tabs-427464" style="margin-top: 10px">
+                <ul class="nav nav-pills" style="background: #b4d5e3">
+                    <li class="active">
+                        <a href="#panel-589403" data-toggle="tab" ><span class="glyphicon glyphicon-file" > 订单记录</span></a>
+                    </li>
+                </ul>
+            </div>
+            <div style="height:280px;overflow:scroll">
+                <table class="table table-striped table-hover" id="orderTB">
+                    <thead>
+                    <tr>
+                        <th>
+                            产品名
+                        </th>
+                        <th>
+                            单价
+                        </th>
+                        <th>
+                            数量
+                        </th>
+                        <th>
+                            金额
+                        </th>
+                        <th align="center">
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tr  th:each="order : ${userOrders}">
+                        <td th:text="${order.cropid}" style="display: none"></td>
+                        <td th:text="${order.cropname}">zhuzhu</td>
+                        <td th:text="${order.tradeunit}">0</td>
+                        <td th:text="${order.shopamount}">0</td>
+                        <td th:text="${order.shopallvalue}">0</td>
+                        <td><button onclick="toCheck(this)">查看</button></td>
+                    </tr>
+                </table>
+            </div>
+            <!--购物车-->
+            <div class="tabbable" id="tabs-427">
+                <ul class="nav nav-pills" style="background: #b4d5e3">
+                    <li class="active">
+                        <a href="#panel-589" data-toggle="tab" ><span class="glyphicon glyphicon-shopping-cart" > 购物车</span></a>
+                    </li>
+                </ul>
+            </div>
+            <div style="height:280px;overflow:scroll">
+                <table class="table" id="shopCartValue">
+                    <thead>
+                    <tr>
+                        <th>
+                            产品名
+                        </th>
+                        <th>
+                            数量
+                        </th>
+                        <th>
+                            金额
+                        </th>
+                        <th align="center" colspan="3">
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr  th:each="order : ${shopCartList}">
+                        <td th:text="${order.id}" style="display: none">0</td>
+                        <td th:text="${order.cropname}">zhuzhu</td>
+                        <td th:text="${order.cosumeramount}">0</td>
+                        <td th:text="${order.cosumerprice}"></td>
+                        <td><button onclick="calculateResult(this)">结算</button></td>
+                        <td><button onclick="deleteUserShopCart(this)">删除</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-4 column">
+            <!--上架物品-->
+            <div class="tabbable" id="tabs-276829" style="margin-top: 10px">
+                <ul class="nav nav-pills" style="background: #b4d5e3">
+                    <li class="active">
+                        <a id="modal-459816" href="#modal-container-4598162" role="button" class="btn" data-toggle="modal"><span class="glyphicon glyphicon-new-window" > 上架商品</span></a>
+                    </li>
+                </ul>
+                <div style="height:280px;overflow:scroll">
+                <table class="table" action="/personal" id="cropDetail">
+                    <thead>
+                    <tr>
+                        <th>
+                            商品号
+                        </th>
+                        <th>
+                            产品
+                        </th>
+                        <th>
+                            单价
+                        </th>
+                        <th>
+                            库存
+                        </th>
+                        <th>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr  th:each="order : ${mySellList}">
+                        <td th:text="${order.id}">0</td>
+                        <td th:text="${order.name}">zhuzhu</td>
+                        <td th:text="${order.unit}">0</td>
+                        <td th:text="${order.repertory}">0</td>
+                        <td>
+                            <button onclick=""><a id="modal-45981" href="#modal-container-45981" role="button" class="btn" data-toggle="modal">编辑</a></button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <!--上架商品的模态框体-->
+                <div class="modal fade" id="modal-container-4598162" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="myModalLabel2">
+                                    上架商品
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" action="/uploadCrop/toPersonCenter" role="form" method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="thisCropName" class="col-sm-2 control-label">商品名称</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="thisCropName" name="thisCropName" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="thisCropUnit" class="col-sm-2 control-label">商品单价</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="thisCropUnit" name="thisCropUnit"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="thisCropRepertory" class="col-sm-2 control-label">库存</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="thisCropRepertory" name="thisCropRepertory"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="thisCropDetailInfo" class="col-sm-2 control-label">详细信息</label>
+                                        <div class="col-sm-10">
+                                            <textarea type="" class="form-control" id="thisCropDetailInfo" name="thisCropDetailInfo"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="thisCropImgLocation" class="col-sm-2 control-label">产品图</label>
+                                        <div class="col-sm-10">
+                                            <input type="file" class="form-control" id="thisCropImgLocation" name="thisCropImgLocation"/>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <input type="submit" class="btn btn-primary" value="提交" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!--上架商品编辑的模态框体-->
+                <div class="modal fade" id="modal-container-45981" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="myModalLabel3">
+                                    编辑上架商品
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal" action="/personal" role="form" method="post">
+                                    <div class="form-group">
+                                        <label for="num" class="col-sm-2 control-label">商品编号</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="num">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="unit2" class="col-sm-2 control-label">单价</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="unit2" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label">库存</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="kucun1" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button> <button type="button" class="btn btn-primary" onclick="javascript:editStores()">提交</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--产品资讯-->
+            <div class="tabbable" id="tabs-279">
+                <ul class="nav nav-pills" style="background: #b4d5e3">
+                    <li class="active">
+                        <a href="#panel-137" data-toggle="tab"><span class="glyphicon glyphicon-tasks" > 产品资讯</span></a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="panel-137">
+                        <ul style="list-style-type: none;padding: 0;">
+                            <li class="link-text">
+                                [种植]<a href="http://www.qqncpw.com/News/231853.html">车厘子的种植条件</a>
+                            </li>
+                            <li class="link-text">
+                                [种植]<a href="http://www.qqncpw.com/News/231754.html">改良菜地土壤措施</a>
+                            </li>
+                            <li class="link-text">
+                                [种植]<a href="http://www.qqncpw.com/News/231755.html">冬季蔬菜重养根</a>
+                            </li>
+                            <li class="link-text">
+                                [种植]<a href="https://baijiahao.baidu.com/s?id=1687124599669553458&wfr=spider&for=pc">亚麻籽的功效与作用</a>
+                            </li>
+                            <li class="link-text">
+                                [养殖]<a href="http://www.qqncpw.com/News/231639.html">冬棚虾放苗如何提高成活率</a>
+                            </li>
+                            <li class="link-text">
+                                [养殖]<a href="https://baijiahao.baidu.com/s?id=1680419985666139955&wfr=spider&for=pc">畜牧企业如何搭载“一带一路”快车？</a>
+                            </li>
+                            <li class="link-text">
+                                [养殖]<a href="http://www.moa.gov.cn/xw/zwdt/202101/t20210109_6359698.htm">小龙虾贵了 市民直呼吃不起</a>
+                            </li>
+                            <li class="link-text">
+                                [养殖]<a href="http://www.moa.gov.cn/xw/zwdt/202012/t20201231_6359258.htm">“猪周期”难题有解 生猪期货要来了</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--网页底部-->
+<div class="bottom-img">
+    <img src="/img/bottomPage.png" width="988" height="70">
+</div>
+<span id="buyThisCrop" style="display: none" th:text="${buyThisCrop}"></span>
+<span id="deleteThisCrop" style="display: none" th:text="${deleteThisCrop}"></span>
+<span id="updateFlag" style="display: none" th:text="${updateFlag}"></span>
+<span id="updateUserInfoFlag" style="display: none" th:text="${updateUserInfoFlag}"></span>
+<script src="/component/personal-js/topPublic.js"></script>
+<script src="/component/personal-js/productCenter.js"></script>
+<script>
+    var buyThisCrop = document.getElementById("buyThisCrop").innerText;
+    if(buyThisCrop == 1011)
+        alert("购买成功！");
+    var deleteThisCrop = document.getElementById("deleteThisCrop").innerText;
+    if(deleteThisCrop == 1013)
+        alert("删除成功！");
+    var updateFlag = document.getElementById("updateFlag").innerText;
+    if(updateFlag == 1055)
+        alert("修改成功！");
+    var updateUserInfoFlag = document.getElementById("updateUserInfoFlag").innerText;
+    if(updateUserInfoFlag == 1077)
+        alert("修改成功！");
+    function toEdit() {
+        var theName = document.getElementById("name").value;
+        var gender = document.getElementById("gender").value;
+        var telephone = document.getElementById("telephone").value;
+        var address = document.getElementById("address").value;
+        var idcard = document.getElementById("idcard").value;
+        window.location.href="/personal/editPersonal?name="+theName+"&gender="+gender+"&telephone="+telephone+"&address="+address+"&identitycard="+idcard;
+    }
+    function toCheck(the) {
+        var thex=the.parentNode.parentNode.rowIndex;
+        var table=document.getElementById("orderTB");
+        var detailInfo = table.rows[thex].cells[0].innerHTML;
+        window.location.href="productCenter/product?productId=" + detailInfo;
+    }
+    function calculateResult(the){
+        var thex=the.parentNode.parentNode.rowIndex;
+        var table=document.getElementById("shopCartValue");
+        var detailInfo = table.rows[thex].cells[0].innerHTML;
+        //var cropId = table.rows[thex].cells[2].innerHTML;
+        window.location.href="/settleAccountFromPersonal?orderId=" + detailInfo;
+    }
+    function deleteUserShopCart(the){
+        var thex=the.parentNode.parentNode.rowIndex;
+        var table=document.getElementById("shopCartValue");
+        var detailInfo = table.rows[thex].cells[0].innerHTML;
+        window.location.href="/deleteShopCart?orderId=" + detailInfo;
+    }
+    function uploadMyCrop(){
+        var thisCropName = document.getElementById("thisCropName").value;
+        var thisCropUnit = document.getElementById("thisCropUnit").value;
+        var thisCropRepertory = document.getElementById("thisCropRepertory").value;
+        var thisCropDetailInfo = document.getElementById("thisCropDetailInfo").value;
+        var thisCropImgLocation = document.getElementById("thisCropImgLocation").value;
+        if(thisCropName != null && thisCropUnit != null && thisCropRepertory != null && thisCropDetailInfo != null && thisCropImgLocation != null){
+            window.location.href="/uploadCrop/toPersonCenter?thisCropName=" + thisCropName + "&thisCropUnit=" + thisCropUnit + "&thisCropRepertory=" + thisCropRepertory
+                +"&thisCropDetailInfo=" + thisCropDetailInfo + "&thisCropImgLocation='" + thisCropImgLocation + "'";
+        }
+        else
+            alert("请填写完所有信息后上传商品");
+    }
+    function editStores(){
+        var num=document.getElementById("num").value;
+        var editunit=document.getElementById("unit2").value;
+        var editkucun=document.getElementById("kucun1").value;
+        window.location.href="/merchantPersonal/editStores?editId=" + num + "&editunit="+editunit+"&editkucun="+editkucun;
+    }
+    function searchOnClick(){
+        var searchParam = document.getElementById("keyword").value;
+        console.log(searchParam);
+        window.location.href="/searchCropList?keyWord=" + searchParam;
+    }
+</script>
+</body>
+</html>

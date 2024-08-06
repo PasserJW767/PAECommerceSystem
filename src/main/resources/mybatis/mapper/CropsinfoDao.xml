@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.personal.ecommercesys.dao.CropsinfoDao">
+  <resultMap id="BaseResultMap" type="com.personal.ecommercesys.model.Cropsinfo">
+    <!--@mbg.generated-->
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="unit" jdbcType="DOUBLE" property="unit" />
+    <result column="sales" jdbcType="DOUBLE" property="sales" />
+    <result column="repertory" jdbcType="DOUBLE" property="repertory" />
+    <result column="detailInfo" jdbcType="VARCHAR" property="detailinfo" />
+    <result column="seller" jdbcType="VARCHAR" property="seller" />
+    <result column="pictureLocation" jdbcType="VARCHAR" property="picturelocation" />
+    <result column="addingTime" jdbcType="TIMESTAMP" property="addingtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    Id, `name`, unit, sales, repertory, detailInfo, seller, pictureLocation, addingTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from cropsinfo
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from cropsinfo
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="Id" keyProperty="id" parameterType="com.personal.ecommercesys.model.Cropsinfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cropsinfo (`name`, unit, sales, 
+      repertory, detailInfo, seller, 
+      pictureLocation, addingTime)
+    values (#{name,jdbcType=VARCHAR}, #{unit,jdbcType=DOUBLE}, #{sales,jdbcType=DOUBLE}, 
+      #{repertory,jdbcType=DOUBLE}, #{detailinfo,jdbcType=VARCHAR}, #{seller,jdbcType=VARCHAR}, 
+      #{picturelocation,jdbcType=VARCHAR}, #{addingtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="Id" keyProperty="id" parameterType="com.personal.ecommercesys.model.Cropsinfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into cropsinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="sales != null">
+        sales,
+      </if>
+      <if test="repertory != null">
+        repertory,
+      </if>
+      <if test="detailinfo != null">
+        detailInfo,
+      </if>
+      <if test="seller != null">
+        seller,
+      </if>
+      <if test="picturelocation != null">
+        pictureLocation,
+      </if>
+      <if test="addingtime != null">
+        addingTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=DOUBLE},
+      </if>
+      <if test="sales != null">
+        #{sales,jdbcType=DOUBLE},
+      </if>
+      <if test="repertory != null">
+        #{repertory,jdbcType=DOUBLE},
+      </if>
+      <if test="detailinfo != null">
+        #{detailinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="seller != null">
+        #{seller,jdbcType=VARCHAR},
+      </if>
+      <if test="picturelocation != null">
+        #{picturelocation,jdbcType=VARCHAR},
+      </if>
+      <if test="addingtime != null">
+        #{addingtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.personal.ecommercesys.model.Cropsinfo">
+    <!--@mbg.generated-->
+    update cropsinfo
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=DOUBLE},
+      </if>
+      <if test="sales != null">
+        sales = #{sales,jdbcType=DOUBLE},
+      </if>
+      <if test="repertory != null">
+        repertory = #{repertory,jdbcType=DOUBLE},
+      </if>
+      <if test="detailinfo != null">
+        detailInfo = #{detailinfo,jdbcType=VARCHAR},
+      </if>
+      <if test="seller != null">
+        seller = #{seller,jdbcType=VARCHAR},
+      </if>
+      <if test="picturelocation != null">
+        pictureLocation = #{picturelocation,jdbcType=VARCHAR},
+      </if>
+      <if test="addingtime != null">
+        addingTime = #{addingtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.personal.ecommercesys.model.Cropsinfo">
+    <!--@mbg.generated-->
+    update cropsinfo
+    set `name` = #{name,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=DOUBLE},
+      sales = #{sales,jdbcType=DOUBLE},
+      repertory = #{repertory,jdbcType=DOUBLE},
+      detailInfo = #{detailinfo,jdbcType=VARCHAR},
+      seller = #{seller,jdbcType=VARCHAR},
+      pictureLocation = #{picturelocation,jdbcType=VARCHAR},
+      addingTime = #{addingtime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <!--获得所有产品-->
+  <select id="getAllProduct" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from cropsinfo
+  </select>
+  <!--按照传进来的产品名选择产品信息-->
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from cropsinfo
+    where name = #{name,jdbcType=VARCHAR}
+  </select>
+  <select id="searchByKeyWord" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from cropsinfo
+    where name like concat ('%',#{keyWord},'%')
+  </select>
+  <select id="selectBySellerAndSortByDate" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from cropsinfo
+    where seller = #{seller,jdbcType=VARCHAR}
+  </select>
+</mapper>

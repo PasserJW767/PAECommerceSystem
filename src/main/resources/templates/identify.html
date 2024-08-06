@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:c="http://www.w3.org/1999/XSL/Transform">
+<head>
+    <meta charset="UTF-8">
+    <title>认证</title>
+    <link rel="stylesheet" href="/component/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/component/personal-css/registerPage.css">
+    <script src="/component/jquery-2.1.1/jquery.min.js"></script>
+    <script src="/component/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/component/personal-js/register-js.js"></script>
+</head>
+<body>
+
+<div class="background">
+    <div class="container" >
+        <div class="row clearfix">
+            <div class="col-md-5 column">
+                <div class="sysname-div">
+                    <img id="logoimg" class="logoimg" src="/img/logo.jpg">
+                    <label for="logoimg">用户认证 </label>
+                </div>
+            </div>
+            <div class="col-md-6 column">
+            </div>
+            <div class="col-md-1 column">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-warning btn-lg" onclick="javaScript:history.back()">退出认证</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-position">
+            <div class="row clearfix">
+                <div class="col-md-1 column">
+
+                </div>
+                <div class="col-md-8 column">
+                    <h2>
+                        您好，欢迎认证！
+                    </h2><br><br>
+                </div>
+                <div class="col-md-3 column">
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-md-2 column"></div>
+                <div class="col-md-10 column">
+                    <form action="/identify/submit" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="ID" class="col-sm-2 control-label" >身份证号</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="ID" name="ID" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="realName" class="col-sm-2 control-label" >真实姓名</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="realName" name="realName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile" class="col-sm-2 control-label" >身份证照</label><br/><br/>
+                            <div class="col-sm-8">
+                                <input type="file" id="exampleInputFile" name="idCardFront"/>
+                                <p class="help-block">
+                                    请上传真实身份证照片正面
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputFile1" class="col-sm-2 control-label" >身份证照</label><br/><br/>
+                            <div class="col-sm-8">
+                                <input type="file" id="exampleInputFile1" name="idCardBehind"/>
+                                <p class="help-block">
+                                    请上传真实身份证照片背面
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-2">
+                                <button type="submit" class="btn btn-success btn-lg">提&nbsp;&nbsp;&nbsp;交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<span id="noIdentifyFlag" th:text="${noIdentifyFlag}" style="display: none"></span>
+<span id="identifyFail" th:text="${identifyFail}" style="display: none"></span>
+</body>
+<script>
+    var noIdentifyFlag = document.getElementById("noIdentifyFlag").innerText;
+    if(noIdentifyFlag == 1001){
+        alert("您还未进行身份认证，请先进行身份认证！");
+    }
+    var identifyFail = document.getElementById("identifyFail").innerText;
+    if(identifyFail == 1005){
+        alert("您的身份证与注册身份证不一致，请联系管理员。电话：121221");
+    }
+</script>
+</html>

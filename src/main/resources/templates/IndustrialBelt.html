@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>特色产业带</title>
+    <link rel="stylesheet" href="/component/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/component/personal-css/topNav.css">
+    <script src="/component/jquery-2.1.1/jquery.min.js"></script>
+    <script src="/component/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<style type="text/css">
+    .bottom-img { text-align:center; width:100%; height:70px; background-color:#56ac69; }
+    .industry-con-title{ height:40px; line-height:40px; padding-left:20px; font-size:16px; color:#fff; background-color:#3e9852;}
+    .industry-line{ margin:0 auto; height:20px; width:100%;}
+    .list-div {
+        width: 1160px;
+        height: 438px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+    }
+    .ul-div {
+        overflow: hidden;
+        height: 438px;
+        list-style-type: none;
+        padding: 0;
+    }
+    .li-div {
+        float: left;
+        height: 438px;
+        list-style: none;
+        box-sizing: border-box;
+    }
+    .head-div {
+        width: 240px;
+        float: left;
+        height: 438px;
+    }
+    .unsee-img {
+        display:none;
+        float: left;
+    }
+    .see-img {
+        width: 678px;
+    }
+    .div-img{
+        float: left;border: 1px solid rgba(0, 0, 0, 0.2);
+        margin-top: 2px;margin-bottom:2px;width: 232px;height: 242px;
+    }
+    .text-p{
+        font-family:微软雅黑;font-size: 25px;float: left;padding-top: 10px;padding-left: 20px;
+    }
+    .link-text{text-overflow:ellipsis;overflow:hidden;white-space: nowrap;}
+
+</style>
+
+<!--网站图标和搜索框-->
+<div class="headerer">
+    <div class="sysname-div">
+        <img id="logoimg" class="logoimg" src="/img/logo.jpg">
+        <label for="logoimg">扶贫助农电子商务平台 </label>
+    </div>
+    <div class="searcher" >
+        <input type="text" class="kuang" name="keyword" id="keyword" value="">
+        <a href="javascript:searchOnClick()"><input name="imageField" type="image" src="/img/search.jpg" width="60" height="36" border="0" style="border:none;"></a>
+    </div>
+</div>
+<!--导航栏-->
+<div class="nav-bg">
+    <div class="nav-er" id="topNav_ul">
+        <ul >
+            <li ><a href="javascript:toIndex()">网站首页</a></li>
+
+            <li  ><a style="color: #1b6d85" href="#" >特色产业带</a></li>
+
+            <li ><a href="javascript:toProductCenter()" >产品中心</a></li>
+
+            <li ><a href="javascript:toClassification()" >采供分类</a></li>
+
+            <li ><a href="javascript:toEnterprise()" >名企优录</a></li>
+
+            <li ><a href="#" >农博会</a></li>
+
+            <li ><a href="#" >品牌集</a></li>
+
+            <li ><a href="#" >助农行动</a></li>
+
+            <li ><a href="#" >资讯中心</a></li>
+
+        </ul></div>
+</div>
+<div><img width="100%" height="15%" src="/img/industrialBelt/lb1.jpg"></div>
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="industry-line"></div>
+        <h2 class="industry-con-title">特色产品</h2>
+        <div class="industry-line"></div>
+        <!--特色产品-->
+        <div class="col-md-12 column" >
+            <div class="row">
+            <div class="div-img" style="background-image: url(/img/industrialBelt/xytc1.jpg);">
+                <a href="#" style="color: #1e7e34;"><p class="text-p">清河</p><p style="padding-top: 25px">&nbsp;特色产品</p></a>
+                <p style="padding-left: 20px">产地批发大枣直销</p>
+            </div>
+                <div class="div-img" style="background-image: url(/img/industrialBelt/xytc2.jpg);">
+                    <a href="#" style="color: #1e7e34;"><p class="text-p">滦平</p><p style="padding-top: 25px">&nbsp;特色产品</p></a>
+                    <p style="padding-left: 20px">产地新鲜核桃直销</p>
+                </div>
+                    <div class="div-img" style="background-image: url(/img/industrialBelt/xytc3.jpg);">
+                        <a href="#" style="color: #1e7e34;"><p class="text-p">易县</p><p style="padding-top: 25px">&nbsp;特色产品</p></a>
+                        <p style="padding-left: 20px">产地新鲜枸杞直销</p>
+                    </div>
+                <div class="div-img" style="background-image: url(/img/industrialBelt/xytc4.jpg);">
+                    <a href="#" style="color: #1e7e34;"><p class="text-p">宽武</p><p style="padding-top: 25px">&nbsp;特色产品</p></a>
+                    <p style="padding-left: 20px">产地新鲜活鱼直销</p>
+                </div>
+            <div class="div-img" style="background-image: url(/img/industrialBelt/xytc5.jpg);">
+                <a href="#" style="color: #1e7e34;"><p class="text-p">乐亭</p><p style="padding-top: 25px">&nbsp;特色产品</p></a>
+                <p style="padding-left: 20px">产地新鲜特产直销</p>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+
+            <div class="industry-line"></div>
+            <h2 class="industry-con-title">特色产业带</h2>
+            <div class="industry-line"></div>
+
+        <div class="col-md-12 column">
+            <!--横向手风琴折叠1-->
+            <div class="row">
+            <div class="list-div">
+                <ul class="ul-div" >
+                    <li class="li-div"><div class="head-div"><img src="/img/industrialBelt/cyd1.jpg"></div><div class="unsee-img">
+                        <div ><h2 style="color: #68da76">&nbsp;康保<br>产业带</h2>
+                        <p>&emsp;&emsp;康保县隶属于张家口市，地处河北省西北部。东、北、西三面分别与内蒙古自治区的太仆寺旗、正镶白旗、化德县、商都县接壤，南部同张北、沽源、尚义三县毗邻。东隔沙河与曲阳县相望，南与正定、新乐两县毗邻，西与灵寿交界，北与阜平接壤。</p></div>
+                    <p><h4 style="color: #68da76">特色产品：</h4>&emsp;&emsp;马铃薯、老窖、红芸豆</p>
+                        <div style="margin-top: 50px;"><img width="200px" height="126px" style="padding-left: 10px" src="/img/industrialBelt/cyd_kb1.jpg"> <img width="200px" height="126px" src="/img/industrialBelt/cyd_kb2.jpg"></div>
+                    </div></li>
+                    <li class="li-div"><div class="head-div"><img src="/img/industrialBelt/cyd2.jpg"></div><div class="unsee-img">
+                        <div ><h2 style="color: #68da76">&nbsp;平乡<br>产业带</h2>
+                            <p>&emsp;&emsp;平乡，隶属于河北省邢台市。西与南和县接壤，东与广宗县毗邻，北与巨鹿县相连，南邻邯郸市;邢黄铁路过境建站;东吕高速公路横穿东西，邢清、定魏两条省级公路纵贯南北。东隔沙河与曲阳县相望，南与正定、新乐两县毗邻，西与灵寿交界，北与阜平接壤。</p></div>
+                        <p><h4 style="color: #68da76">特色产品：</h4>&emsp;&emsp;芝麻糖、十香菜、龙兴贡米</p>
+                        <div style="margin-top: 50px;"><img width="200px" height="126px" style="padding-left: 10px" src="/img/industrialBelt/cyd_px1.jpg"> <img width="200px" height="126px" src="/img/industrialBelt/cyd_px2.jpg"></div>
+                    </div></li>
+                    <li class="li-div"><div class="head-div"><img src="/img/industrialBelt/cyd3.jpg"></div><div class="unsee-img">
+                        <div ><h2 style="color: #68da76">&nbsp;行唐<br>产业带</h2>
+                            <p>&emsp;&emsp;行唐县隶属于石家庄市，位于河北省西南部，太行山东麓浅山丘陵区与华北平原的交接地带。境内地势由西北向东南逐渐倾斜，呈阶梯分布，由低山、丘陵、平原三种地貌组成。东隔沙河与曲阳县相望，南与正定、新乐两县毗邻，西与灵寿交界，北与阜平接壤。</p></div>
+                        <p><h4 style="color: #68da76">特色产品：</h4>&emsp;&emsp;龙江贡米、黑枣、富士苹果</p>
+                        <div style="margin-top: 50px;"><img  width="200px" height="126px" style="padding-left: 10px" src="/img/industrialBelt/cyd_xt1.jpg"> <img width="200px" height="126px" src="/img/industrialBelt/cyd_xt2.jpg"></div>
+                    </div></li>
+                </ul>
+            </div>
+            </div>
+            <!--横向手风琴折叠2-->
+            <div class="row">
+                <div class="list-div">
+                    <ul class="ul-div" >
+                        <li class="li-div"><div class="head-div"><img src="img/industrialBelt/cyd4.jpg"></div><div class="unsee-img">
+                            <div ><h2 style="color: #68da76">&nbsp;永年<br>产业带</h2>
+                                <p>&emsp;&emsp;永年县隶属于河北省邯郸市，位于太行山东麓，东与曲周县、鸡泽县交界，西与武安市为邻，南与肥乡县、邯郸县接壤，北与沙河市、南和县相连，系晋冀鲁豫四省交汇处。</p></div>
+                            <p><h4 style="color: #68da76">特色产品：</h4>&emsp;&emsp;蜂蜜、醉香鸡、黄花菜、红豆杉、荸荠</p>
+                            <div style="margin-top: 50px;"><img width="200px" height="126px" style="padding-left: 10px" src="/img/industrialBelt/cyd_yn1.jpg"> <img width="200px" height="126px" src="/img/industrialBelt/cyd_yn2.jpg"></div>
+                        </div></li>
+                        <li class="li-div"><div class="head-div"><img src="img/industrialBelt/cyd5.jpg"></div><div class="unsee-img">
+                            <div ><h2 style="color: #68da76">&nbsp;迁安<br>产业带</h2>
+                                <p>&emsp;&emsp;迁安，位于河北省东北部，属半山区县级市，地处燕山南麓，滦河岸边。迁安地处环渤海环京津一级经济开发区内，区位优势明显，交通四通八达。</p></div>
+                            <p><h4 style="color: #68da76">特色产品：</h4>&emsp;&emsp;板栗、核桃、小米、花生</p>
+                            <div style="margin-top: 50px;"><img width="200px" height="126px" style="padding-left: 10px" src="/img/industrialBelt/cyd_qa1.jpg"> <img width="200px" height="126px" src="/img/industrialBelt/cyd_qa2.jpg"></div>
+                        </div></li>
+                        <li class="li-div"><div class="head-div"><img src="img/industrialBelt/cyd6.jpg"></div><div class="unsee-img">
+                            <div ><h2 style="color: #68da76">&nbsp;滦平<br>产业带</h2>
+                                <p>&emsp;&emsp;滦平县隶属于河北省承德市，位于承德市西南部，处于京、津、辽、蒙的省市"金三角"交汇点，东部和东南部与双滦区、承德县为邻，西部、西南部与北京市怀柔区、密云县接壤，北部与丰宁、隆化毗连。</p></div>
+                            <p><h4 style="color: #68da76">特色产品：</h4>&emsp;&emsp;玉米、黄芹、山楂</p>
+                            <div style="margin-top: 50px;"><img width="200px" height="126px" style="padding-left: 10px" src="/img/industrialBelt/cyd_lp1.jpg"> <img width="200px" height="126px" src="/img/industrialBelt/cyd_lp2.jpg"></div>
+                        </div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="row">
+            <div class="industry-line"></div>
+            <h2 class="industry-con-title">行业互动</h2>
+            <div class="industry-line"></div>
+        </div>
+        </div>
+    </div>
+    <div class="row clearfix" style="margin-bottom: 20px">
+        <div class="row">
+        <div class="col-md-6 column" >
+
+            <div class="media">
+                <a  class="pull-left"><img width="200px" height="120px" src="img/industrialBelt/zxdt1.jpg" class="media-object"  /></a>
+                <div class="link-text">
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="http://www.sanqin.com/2020-12/19/content_8815002.html"> 西安市商务局成功举办“一带一路”农业合作线上对接会</a>
+                        </h4>三秦都市报-秦闻讯（记者 白圩珑）12月17日，由西安市商<br>务局主办，西安市商务局联合西安市驻吉尔吉斯斯坦商务<br>代表处、华和国际商务咨询机构承办的“西安‘一带一路’农业<br>合作线上对接会”成功举行。
+                    </div>
+                </div>
+            </div>
+            <div class="media">
+                <a  class="pull-left"><img width="200px" height="120px" src="/img/productsPicture/news2.jpg" class="media-object"  /></a>
+                <div class="link-text">
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="https://baijiahao.baidu.com/s?id=1688249231665575184&wfr=spider&for=pc"> 退耕还林还草综合效益不断释放丨回眸林草“十三五”</a>
+                        </h4>作为世界上投资最大、政策性最强、涉及面最广、群众参<br>与程度最高的一项重大生态工程，中国退耕还林还草工程<br>创造了世界生态建设史上的奇迹。“十三五”期间，这一超级<br>生态工程持续发力，不断取得新的重要进展，生态、经济、社会综合效益不断释放，在决胜全面小康决战脱贫攻坚中发挥重要作用，作出重要贡献。
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 column">
+            <div class="media">
+                <a  class="pull-left"><img width="200px" height="120px" src="/img/productsPicture/news1.jpg" class="media-object"  /></a>
+                <div class="link-text">
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="http://www.hxxkw.org/dujia/dt/126152.html"> 商务部：食用农产品价格比前一周上涨2.4%</a>
+                        </h4>据商务部监测，2020年12月28日至2021年1月3日全国食用<br>农产品市场价格比前一周上涨2.4%，生产资料市场价格比<br>前一周(下同)下降0.1%。
+                    </div>
+                </div>
+            </div>
+            <div class="media">
+                <a  class="pull-left"><img width="200px" height="120px" src="img/industrialBelt/hysq1.jpg" class="media-object"  /></a>
+                <div class="link-text">
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="https://baijiahao.baidu.com/s?id=1688249231665575184&wfr=spider&for=pc"> 商务部研究院：新消费引领国内大循环，拼多多等重塑“互联网+农业+消费”产业链</a>
+                        </h4>由技术创新应用引发及支撑形成的新消费模式，正在畅通<br>国内大循环、促进形成国内国际双循环新格局中发挥着重<br>要作用。12月9日，商务部研究院发布的《2020年中国消<br>费市场发展报告》（下称《报告》）显示，新消费成为引领国内大循环的重要动力，拼多多等国内数字经济平台在打通农产品上行、工业消费品C2M制造等现代流通体系中发挥着积极作用，并助推市场主体实现数字化转型，催生新业态、新模式，提升产业链、供应链、价值链效益，培育数字经济新动能。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+<!--网页底部-->
+<div class="bottom-img">
+    <img src="/img/bottomPage.png" width="988" height="70">
+</div>
+<script src="/component/personal-js/topPublic.js"></script>
+<!--横向手风琴折叠-->
+<script>
+    var lis = document.querySelectorAll(".li-div");
+    var imgs = document.querySelectorAll(".unsee-img");
+    for(var i = 0; i < lis.length; i++) {
+        //给所有的li标签添加点击事件
+        lis[i].onclick = function () {
+            //将所有的图片宽度设置为0
+            for(var i = 0; i < lis.length; i++) {
+                imgs[i].className="unsee-img";
+            }
+            //将当前点击li标签中的img标签设置宽度为220px
+            this.querySelector(".unsee-img").className="see-img";
+        }
+    }
+</script>
+<!--当前所在页面导航栏高亮
+<script type="text/javascript" language="javascript">
+    var nav = document.getElementById("topNav_ul");
+    var links = nav.getElementsByTagName("li");
+    var listA = nav.getElementsByTagName("a");
+    /*获得当前页面的网址*/
+    var currentUrl = document.location.href;
+    var last = 0;
+    for (var i=0;i<links.length;i++)
+    {
+        // 遍历所有<a>标签的href，将当前<a>标签的href存入变量中
+        var linkUrl =  listA[i].getAttribute("href")
+        // 判断当前页面的网址和当前href是否相等
+        if(currentUrl.indexOf(linkUrl)!= -1)
+        {
+            last = i;
+        }
+    }
+    // 将当前页面导航栏高亮
+    links[last].className = "hl";
+</script>-->
+<!--处理搜索框跳转的JS-->
+<script>
+    function searchOnClick(){
+        var searchParam = document.getElementById("keyword").value;
+        window.location.href="/searchCropList?keyWord=" + searchParam;
+    }
+</script>
+</body>
+</html>

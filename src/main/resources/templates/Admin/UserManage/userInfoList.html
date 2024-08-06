@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员端首页/用户信息列表</title>
+    <link rel="stylesheet" href="/component/personal-css/AdminHomePage.css" type="text/css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/component/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        Date.prototype.format = function (fmt) {
+            var o = {
+                "y+": this.getFullYear, //年
+                "M+": this.getMonth() + 1, //月份
+                "d+": this.getDate(), //日
+                "h+": this.getHours(), //小时
+                "m+": this.getMinutes(), //分
+                "s+": this.getSeconds() //秒
+            };
+            if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+            for (var k in o)
+                if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+            return fmt;
+        }
+        setInterval("document.getElementById('dateTime').innerHTML = (new Date()).format('yyyy-MM-dd hh:mm:ss');", 1000);
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            var Accordion = function (el, multiple) {
+                this.el = el || {};
+                this.multiple = multiple || false;
+                var links = this.el.find('.link');
+                links.on('click', {
+                    el: this.el,
+                    multiple: this.multiple
+                }, this.dropdown);
+            };
+            Accordion.prototype.dropdown = function (e) {
+                var $el = e.data.el;
+                $this = $(this), $next = $this.next();
+                $next.slideToggle();
+                $this.parent().toggleClass('open');
+                if (!e.data.multiple) {
+                    $el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+                }
+                ;
+            };
+            var accordion = new Accordion($('#accordion'), false);
+        });
+    </script>
+    <style>
+        ul {
+            list-style-type:none;
+            margin:0;
+            padding:0;
+        }
+        .aa:link,.aa:visited {
+            display:block;
+            font-weight:bold;
+            color:#FFFFFF;
+            background-color:#bebebe;
+            width:120px;
+            text-align:center;
+            padding:4px;
+            text-decoration:none;
+            text-transform:uppercase;
+        }
+        .aa:hover,.aa:active{
+            background-color: #1874a4;
+        }
+    </style>
+</head>
+<body background="/img/Admin/background.jpg" style="background-size: 100%;" >
+<div id="all" style="width: 1470px;height: 680px;">
+    <div id="top" style="height: 100px;">
+        <div id="topleft" style="width: 300px;height: 98px;margin: 2px 0px 0px 2px;position: absolute;">
+            <div id="topleftimage">
+                <img id="topleftimagin" src="/img/Admin/Admin.png" style="height: 80px;width: 80px;margin-top: 5px;margin-left: 5px;float: left;">
+            </div>
+            <div id="topleftfont" style="float: right;">
+                <p><font color="#f5f5f5">管理员,欢迎您</font><br>
+                    <font color="#f5f5f5">当前时间:</font>
+                <div id="dateTime" class="timeFont"></div>
+                </p>
+            </div>
+        </div>
+        <div id="topmiddle">
+            <div id="topmiddlefont">
+                扶贫助农电子商务平台管理端
+            </div>
+        </div>
+        <div id="topright" style=" width: 100px;">
+            <div>
+                <fieldset>
+                    <legend align=center><font size="2px" color="#f5f5f5">本地天气</font></legend>
+                    <div class="Contain">
+                        <div class="Other">
+                            <iframe width="200" scrolling="no" height="65" frameborder="0"  style="color: whitesmoke" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1">
+                            </iframe>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <div id="middle" style="margin-bottom:250px;">
+        <div id="middleleft"  style="width:200px;height:500px;border-right: 2px solid #636463;background-color: #b3b5b3;float: left;">
+            <div id="bigfont" style="margin-left: 50px;" >
+                <font size="5px" face="华文仿宋"><b>功能菜单</b></font>
+            </div>
+            <br>
+            <div class="mainDiv1">
+                <ul id="accordion" class="accordion">
+
+                    <li><div class="link"><i class="fa fa-globe"></i>用户管理<i class="fa fa-chevron-down"></i></div>
+                        <ul class="submenu">
+                            <li><a href="/admin/userManage/addUser" class="aa" style="font-family: 方正粗黑宋简体">用户添加</a></li>
+                            <li><a href="/admin/userManage/userWatigList" class="aa" style="font-family: 方正粗黑宋简体">用户信息审核</a></li>
+                            <li><a href="/admin/userManage/userInfoList" class="aa" style="font-family: 方正粗黑宋简体">查看所有用户</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div id="middleright" style="width: 1262px;height:500px;float: right;">
+            <div>
+                <button class="useBtn" onclick="location.href='/admin/homePage'" style="margin-top: 10px">返回</button>
+            </div>
+            <div style="padding-left: 50px;padding-right: 50px;">
+                <table class="table table-striped" id="tb">
+                    <div style="margin-left: 450px">
+                        <font size="6" >用户信息列表</font>
+                            <input type="text" id="searchName" placeholder="请输入想要查找的用户名" style="margin-left: 140px">
+                            <a href="javascript:toFind()"><img src="/img/Admin/search.png" height="15px"></a>
+                    </div>
+                    <thead>
+                    <tr>
+                        <th>用户名</th>
+                        <th>性别</th>
+                        <th>密码</th>
+                        <th>联系电话</th>
+                        <th>住址</th>
+                        <th>级别</th>
+                        <th>身份证号</th>
+                        <th>操作</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr  th:each="user : ${articles}">
+                        <td scope="row" th:text="${user.username}">无</td>
+                        <td th:text="${user.gender}">男</td>
+                        <td th:text="${user.userpwd}">001</td>
+                        <td th:text="${user.telephone}">1</td>
+                        <td th:text="${user.address}">1</td>
+                        <td th:text="${user.grade}">1</td>
+                        <td th:text="${user.identitycard}">1</td>
+                        <td><button onclick="toEdit(this)">edit</button></td>
+                        <td><button onclick="toDelete(this)">delete</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="margin-left: 800px">
+                <a th:href="@{'/admin/userManage/userInfoList?pageNum=1'}" >首页</a>
+                <a th:if="${articles.getPageNum()>=2}" th:href="@{'/admin/userManage/userInfoList?pageNum=' + ${articles.getPageNum()-1}}" th:text="上一页" style="margin-left: 50px"></a>
+                <a th:if="${articles.getPageNum()<articles.getPages()}" th:href="@{'/admin/userManage/userInfoList?pageNum=' + ${articles.getPageNum()+1}}" th:text="下一页" style="margin-left: 50px"></a>
+                <a th:href="@{'/admin/userManage/userInfoList?pageNum=' + ${articles.getPages()}}" style="margin-left: 50px">尾页</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="bottom" style="height:72px;width: 1468px;margin-top: 500px;">
+        <!--此处有底部滚动字幕-->
+    </div>
+</div>
+<!--底部滚动字幕-->
+<script src="/component/personal-js/admin/admin-bottom.js"></script>
+<!--获得搜索框的值跳转-->
+<script>
+    function toFind() {
+        var theName = document.getElementById("searchName").value;
+        window.location.href="/searchNameList?searchName="+theName;
+    }
+    function toDelete(the) {
+       if(window.confirm("确定要删除吗？")){
+           var thex=the.parentNode.parentNode.rowIndex;
+           var table=document.getElementById("tb");
+           window.location.href="/deleteUserinfo?deleteName="+table.rows[thex].cells[0].innerHTML;
+       }
+    }
+
+    function toEdit(the) {
+        var thex=the.parentNode.parentNode.rowIndex;
+        var table=document.getElementById("tb");
+        window.location.href="/admin/userManage/selectForEdit?selectName="+table.rows[thex].cells[0].innerHTML;
+    }
+</script>
+</body>
+</html>

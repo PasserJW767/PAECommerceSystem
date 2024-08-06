@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="/component/personal-css/DesignPage.css">
+</head>
+<body>
+<div class="center" align="center">
+    <div class="background">
+        <div class="sysname-div">
+            <img id="logoimg" class="logoimg" src="/img/logo.jpg">
+            <label for="logoimg">用户登录 </label>
+        </div>
+        <label id="remindLabel" style="display: none" th:if="${loginFlag} == 1001" th:text="账号或密码有误，请重新输入"></label>
+        <lable id="unloginLable" style="display:none" th:if="${unloginFlag} == 1002" th:text="您还未登录，请先登录"></lable>
+        <div class="lgmain-div" style="margin-top: 100px;margin-left: 450px">
+            <div class="lgtop-div">您好！请登录</div>
+            <div class="lg-div">
+                <div id="loginMessage" class="loginMessage"></div>
+
+                <form action="/user/login" method="post">
+                    <div class="login-div">
+                        <input id="username" class="username" name="username" placeholder="用户名" value="" type="text" />
+                    </div>
+                    <div class="login-div">
+                        <input id="password" name="userpwd" class="password" placeholder="密码" value="" type="password" />
+                    </div>
+                    <div class="btn-div">
+                        <button class="loginBtn" type="submit" >登&nbsp;&nbsp;&nbsp;录</button>
+                    </div>
+                    <div class="resetBtn-div">
+                        <button class="loginBtn" type="reset" >重&nbsp;&nbsp;&nbsp;置</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var aa = document.getElementById('remindLabel').innerHTML;
+    alert(aa);
+</script>
+<script>
+    var unloginReimind = document.getElementById('unloginLable').innerHTML;
+    alert(unloginReimind);
+</script>
+</body>
+</html>

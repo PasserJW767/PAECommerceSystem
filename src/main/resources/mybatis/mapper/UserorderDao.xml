@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.personal.ecommercesys.dao.UserorderDao">
+  <resultMap id="BaseResultMap" type="com.personal.ecommercesys.model.Userorder">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cropId" jdbcType="INTEGER" property="cropid" />
+    <result column="cropName" jdbcType="VARCHAR" property="cropname" />
+    <result column="tradeUnit" jdbcType="DOUBLE" property="tradeunit" />
+    <result column="shopAmount" jdbcType="DOUBLE" property="shopamount" />
+    <result column="shopAllValue" jdbcType="DOUBLE" property="shopallvalue" />
+    <result column="buyer" jdbcType="VARCHAR" property="buyer" />
+    <result column="orderCreateDate" jdbcType="TIMESTAMP" property="ordercreatedate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, cropId, cropName, tradeUnit, shopAmount, shopAllValue, buyer, orderCreateDate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from userorder
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from userorder
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.personal.ecommercesys.model.Userorder" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into userorder (cropId, cropName, tradeUnit, 
+      shopAmount, shopAllValue, buyer, 
+      orderCreateDate)
+    values (#{cropid,jdbcType=INTEGER}, #{cropname,jdbcType=VARCHAR}, #{tradeunit,jdbcType=DOUBLE}, 
+      #{shopamount,jdbcType=DOUBLE}, #{shopallvalue,jdbcType=DOUBLE}, #{buyer,jdbcType=VARCHAR}, 
+      #{ordercreatedate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.personal.ecommercesys.model.Userorder" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into userorder
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cropid != null">
+        cropId,
+      </if>
+      <if test="cropname != null">
+        cropName,
+      </if>
+      <if test="tradeunit != null">
+        tradeUnit,
+      </if>
+      <if test="shopamount != null">
+        shopAmount,
+      </if>
+      <if test="shopallvalue != null">
+        shopAllValue,
+      </if>
+      <if test="buyer != null">
+        buyer,
+      </if>
+      <if test="ordercreatedate != null">
+        orderCreateDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cropid != null">
+        #{cropid,jdbcType=INTEGER},
+      </if>
+      <if test="cropname != null">
+        #{cropname,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeunit != null">
+        #{tradeunit,jdbcType=DOUBLE},
+      </if>
+      <if test="shopamount != null">
+        #{shopamount,jdbcType=DOUBLE},
+      </if>
+      <if test="shopallvalue != null">
+        #{shopallvalue,jdbcType=DOUBLE},
+      </if>
+      <if test="buyer != null">
+        #{buyer,jdbcType=VARCHAR},
+      </if>
+      <if test="ordercreatedate != null">
+        #{ordercreatedate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.personal.ecommercesys.model.Userorder">
+    <!--@mbg.generated-->
+    update userorder
+    <set>
+      <if test="cropid != null">
+        cropId = #{cropid,jdbcType=INTEGER},
+      </if>
+      <if test="cropname != null">
+        cropName = #{cropname,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeunit != null">
+        tradeUnit = #{tradeunit,jdbcType=DOUBLE},
+      </if>
+      <if test="shopamount != null">
+        shopAmount = #{shopamount,jdbcType=DOUBLE},
+      </if>
+      <if test="shopallvalue != null">
+        shopAllValue = #{shopallvalue,jdbcType=DOUBLE},
+      </if>
+      <if test="buyer != null">
+        buyer = #{buyer,jdbcType=VARCHAR},
+      </if>
+      <if test="ordercreatedate != null">
+        orderCreateDate = #{ordercreatedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.personal.ecommercesys.model.Userorder">
+    <!--@mbg.generated-->
+    update userorder
+    set cropId = #{cropid,jdbcType=INTEGER},
+      cropName = #{cropname,jdbcType=VARCHAR},
+      tradeUnit = #{tradeunit,jdbcType=DOUBLE},
+      shopAmount = #{shopamount,jdbcType=DOUBLE},
+      shopAllValue = #{shopallvalue,jdbcType=DOUBLE},
+      buyer = #{buyer,jdbcType=VARCHAR},
+      orderCreateDate = #{ordercreatedate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!--Id为自动增长，不插入Id的插入语句-->
+  <insert id="insertDoNotAddId" parameterType="com.personal.ecommercesys.model.Userorder">
+    insert into userorder (cropId,cropName, tradeUnit,
+      shopAmount, shopAllValue, buyer,
+      orderCreateDate)
+    values (cropId = #{cropid,jdbcType=INTEGER},#{cropname,jdbcType=VARCHAR}, #{tradeunit,jdbcType=DOUBLE},
+      #{shopamount,jdbcType=DOUBLE}, #{shopallvalue,jdbcType=DOUBLE}, #{buyer,jdbcType=VARCHAR},
+      #{ordercreatedate,jdbcType=TIMESTAMP})
+  </insert>
+
+  <select id="selectByBuyer" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from userorder
+    where buyer = #{buyer,jdbcType=VARCHAR}
+  </select>
+</mapper>

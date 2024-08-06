@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:c="http://www.w3.org/1999/XSL/Transform">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="/component/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/component/personal-css/registerPage.css">
+    <script src="/component/jquery-2.1.1/jquery.min.js"></script>
+    <script src="/component/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/component/personal-js/register-js.js"></script>
+</head>
+<body>
+
+<div class="background">
+    <div class="container" >
+        <div class="row clearfix">
+            <div class="col-md-5 column">
+                <div class="sysname-div">
+                    <img id="logoimg" class="logoimg" src="/img/logo.jpg">
+                    <label for="logoimg">用户注册 </label>
+                </div>
+            </div>
+            <div class="col-md-6 column">
+            </div>
+            <div class="col-md-1 column">
+                <div class="pull-right">
+                <button type="button" class="btn btn-warning btn-lg" onclick="exitToIndex()">退出注册</button>
+                </div>
+            </div>
+        </div>
+
+        <label id="remindLabelRegister" style="display: none" th:if="${session.registerRemind}==1002" th:text="用户名已存在，请重新输入"></label>
+        <div class="main-position">
+            <div class="row clearfix">
+                <div class="col-md-1 column">
+
+                </div>
+                <div class="col-md-8 column">
+                    <h2>
+                    您好，欢迎注册！
+                    </h2><br><br>
+                </div>
+                <div class="col-md-3 column">
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-md-2 column"></div>
+                <div class="col-md-10 column">
+                    <form action="/register/toInsertUserinfo" method="post" class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="inputUser" class="col-sm-2 control-label">用户名</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputUser" name="username"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" id="inputPassword" name="userpwd"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputSurePassword" class="col-sm-2 control-label">确认密码</label>
+                            <div class="col-sm-8">
+                                <input type="password" class="form-control" id="inputSurePassword" name="surePassword"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  for="selectGender" class="col-sm-2 control-label">性别</label>
+                            <div class="col-sm-8">
+                            <select  id="selectGender"  class="form-control" name="gender">
+                                <option>男</option>
+                                <option>女</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  for="selectGrade" class="col-sm-2 control-label">用户类型</label>
+                            <div class="col-sm-8">
+                                <select  id="selectGrade"  class="form-control" name="grade">
+                                    <option>普通用户</option>
+                                    <option>农户</option>
+                                    <option>企业级用户</option>
+                                    <option>政府机关</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputTelephone" class="col-sm-2 control-label">联系号码</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputTelephone" name="telephone"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <label for="inputAddress" class="col-sm-2 control-label">地址</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputAddress" name="address"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputID" class="col-sm-2 control-label">身份证号</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="inputID" name="identitycard"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-2">
+                                <button type="submit" class="btn btn-success btn-lg" onclick="return go()">提&nbsp;&nbsp;&nbsp;交</button>
+                            </div>
+                            <div class="col-sm-offset-1 col-sm-4" >
+                                <button type="reset" class="btn btn-success btn-lg">重&nbsp;&nbsp;&nbsp;置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<span id="logUser" th:text="${logUser}" style="display: none"></span>
+<script>
+    var aa=document.getElementById("remindLabelRegister").innerHTML;
+    alert(aa);
+    function exitToIndex(){
+        var logUser = document.getElementById("logUser").innerText;
+        window.location.href="/?logUser=" + logUser;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+#\u6CE8\u91CA
+# application.properties   spring.application.name=empproject
+spring:
+  application:
+    name: ecommercesys
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ecommercesysdatabase?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useAffectedRows=true&zeroDateTimeBehavior=convertToNull&useOldAliasMetadataBehavior=true
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      stat-view-servlet:
+        enabled: false
+        login-username: root
+        login-password: 12345
+        allow: 20.20.10.1/24
+        url-pattern: "/druid/*"
+      web-stat-filter:
+        enabled: false
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+        url-pattern: "/*"
+      initialSize: 5
+      maxActive: 500
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      filter:
+        stat:
+          log-slow-sql: true
+    name: tutorial
+  thymeleaf:
+    #    prefix: classpath:/templates
+    cache: false
+    encoding: utf-8
+    mode: HTML
+    prefix: classpath:/templates/
+  # \u70ED\u90E8\u7F72
+  devtools:
+    restart:
+      enabled: true                   #\u8BBE\u7F6E\u5F00\u542F\u70ED\u90E8\u7F72
+      additional-paths: src/main/java #\u91CD\u542F\u76EE\u5F55
+      exclude: WEB-INF/**
+    freemarker:
+      cache: false                    #\u9875\u9762\u4E0D\u52A0\u8F7D\u7F13\u5B58\uFF0C\u4FEE\u6539\u5373\u65F6\u751F\u6548
+mybatis:
+  # 自动为实体类设置别名，在xml 映射文件中可以只写简单类名（不含包名）而不需全类名
+  type-aliases-package: com.personal.ecommercesys.model
+  mapper-locations: classpath*:mybatis/mapper/*.xml
+
+#此分页库会自动根据数据库类型生成相应的分页 SQL语句
+pagehelper:
+  helperDialect: mysql
+  offsetAsPageNum: true
+  rowBoundsWithCount: true
+  reasonable: false
+  supportMethodsArguments: true
+  returnPageInfo: true
+  params: count=countSql
+
