@@ -198,6 +198,7 @@ public Result updatePassword(@RequestBody Map<String, String> params){
 ## 1. 网站首页
 
 ![](assets\pic1.png)
+![](https://github.com/PasserJW767/PAECommerceSystem/blob/master/assets/pic1.png?raw=true)
 
 ## 2. 特色产业带
 
