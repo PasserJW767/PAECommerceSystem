@@ -197,20 +197,23 @@ public Result updatePassword(@RequestBody Map<String, String> params){
 
 ## 1. 网站首页
 
-![](assets\pic1.png)
+![](assets/pic1.png)
 ![](https://github.com/PasserJW767/PAECommerceSystem/blob/master/assets/pic1.png?raw=true)
 
 ## 2. 特色产业带
 
 ![](assets\pic2.png)
+![](https://github.com/PasserJW767/PAECommerceSystem/blob/master/assets/pic2.png?raw=true)
 
 ## 3. 产品中心
 
 ![](assets\pic3.png)
+![](https://github.com/PasserJW767/PAECommerceSystem/blob/master/assets/pic3.png?raw=true)
 
 ## 4. 采供分类
 
 ![](assets\pic10.png)
+![](https://github.com/PasserJW767/PAECommerceSystem/blob/master/assets/pic10.png?raw=true)
 
 ## 5. 名企优录
 
