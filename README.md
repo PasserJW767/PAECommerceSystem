@@ -198,26 +198,22 @@ public Result updatePassword(@RequestBody Map<String, String> params){
 ## 1. 网站首页
 
 ![](assets/pic1.png)
-![](https://github.com/PasserJW767/PAECommerceSystem/blob/master/assets/pic1.png?raw=true)
 
 ## 2. 特色产业带
 
-![](assets\pic2.png)
-![](https://github.com/PasserJW767/PAECommerceSystem/blob/master/assets/pic2.png?raw=true)
+![](assets/pic2.png)
 
 ## 3. 产品中心
 
-![](assets\pic3.png)
-![](https://github.com/PasserJW767/PAECommerceSystem/blob/master/assets/pic3.png?raw=true)
+![](assets/pic3.png)
 
 ## 4. 采供分类
 
-![](assets\pic10.png)
-![](https://github.com/PasserJW767/PAECommerceSystem/blob/master/assets/pic10.png?raw=true)
+![](assets/pic10.png)
 
 ## 5. 名企优录
 
-![](assets\pic9.png)
+![](assets/pic9.png)
 
 ## 6. 个人中心
 
@@ -225,25 +221,25 @@ public Result updatePassword(@RequestBody Map<String, String> params){
 
 农户比普通用户额外多一个上架商品的列表
 
-![](assets\pic4.png)
+![](assets/pic4.png)
 
 ## 7. 上架商品（仅限农户角色）
 
 上架单品需在进行身份认证后上架（见第10点），上架单品时需要指定商品名称、单价、库存、详细信息，并给定产品代表图片
 
-![](assets\pic7.png)
+![](assets/pic7.png)
 
 ## 8. 商品详情
 
 展示商品的图片、单价、发布者、介绍信息
 
-![](assets\pic5.png)
+![](assets/pic5.png)
 
 ## 9. 商品结算
 
 商品结算主要是选购买的数量，并进行确认购买
 
-![](assets\pic8.png)
+![](assets/pic8.png)
 
 ## 10. 管理端
 
@@ -251,8 +247,8 @@ public Result updatePassword(@RequestBody Map<String, String> params){
 
 管理端页面：
 
-![](assets\pic6.png)
+![](assets/pic6.png)
 
 身份证上传页面：
 
-![](assets\pic11.png)
+![](assets/pic11.png)
